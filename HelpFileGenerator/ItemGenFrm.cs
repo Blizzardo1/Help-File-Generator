@@ -18,12 +18,14 @@ namespace HelpFileGenerator
         public ItemGenFrm()
         {
             InitializeComponent();
+            Text = $"New Item";
         }
 
         public ItemGenFrm(HelpItem hi): this() {
             nameTxt.Text = hi.Name;
             descriptionTxt.Text = hi.Description;
             aliasChk.Checked = hi.IsAlias;
+            Text = $"Editing {hi.Name}";
         }
 
 
