@@ -111,5 +111,36 @@ namespace HelpFileGenerator
         {
             SaveFile(true);
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "Please make sure that the file you're about to convert is a Text File and is formatted in the following way:\n\nCommand — Description\n\nThe separator is an emdash or (Alt+0151). Any line improperly formatted will not be accepted. When the conversion is complete, please check the JSON by loading it into the program.", "SECRET CONVERSION TOOL!");
+            OpenFileDialog ofd = new() { Filter = "Text File (*.txt)|*.txt|All Files (*.*)|*.*"};
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                string[] data = File.ReadAllLines(ofd.FileName);
+                List<HelpItem> lst = new();
+                List<string> errorStr = new();
+                foreach(string line in data)
+                {
+                    try
+                    {
+                        string[] commandItem = line.Split('—');
+                        lst.Add(new HelpItem(commandItem[0], commandItem[1], false));
+                    } catch (Exception ex)
+                    {
+                        // Will throw an out of error exception, but I don't care.
+                        errorStr.Add(line);
+                    }
+                }
+                string json = JsonConvert.SerializeObject(lst);
+                File.WriteAllText($"converted-{DateTime.Now:yyyyyMMddHHmmss}.json", json);
+                if(errorStr.Count > 0)
+                {
+                    MessageBox.Show(this, $"There {(errorStr.Count != 1 ? $"are {errorStr.Count} errors" : $"is {errorStr.Count} error")} found. Please check the document and try to convert again.", "Found errors");
+                }
+                MessageBox.Show(this, "Conversion complete! Please check the JSON for any missing elements");
+            }
+        }
     }
 }
