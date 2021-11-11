@@ -4,6 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>HelpFileGenerator.Program</StartupObject>
+    <Authors>Adonis S. Deliannis</Authors>
+    <Company>Toaster Network</Company>
+    <Product>Help File Creation Tool</Product>
+    <Description>A tool for creating a JSON Database for use in a website to create wonderful tables of commands for beginner linux users.</Description>
+    <Copyright>© Adonis S. Deliannis, 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

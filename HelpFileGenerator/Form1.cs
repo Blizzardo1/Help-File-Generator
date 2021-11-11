@@ -21,6 +21,12 @@ namespace HelpFileGenerator
         public Form1()
         {
             InitializeComponent();
+            Load += Form1_Load;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            aboutToolStripMenuItem.Text = $"About {Text}...";
         }
 
         private void SaveFile(bool saveAs)
@@ -92,6 +98,8 @@ namespace HelpFileGenerator
         {
             //TODO: Implemenet About Box
             // GOD THAT BRINGS BACK HORRIBLE MEMORIES! NO! DO NOT ASK!
+            AboutProgram aboutProgram = new();
+            aboutProgram.ShowDialog();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
