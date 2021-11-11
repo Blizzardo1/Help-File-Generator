@@ -34,7 +34,7 @@
 
 ## About The Project
 
-![Screen Shot](images/screenshot.png)
+![Screen Shot](HelpFileGenerator/images/screenshot.png)
 
 This project has just started development and does not foresee attention right away.  A useful tool in loading a JSON file curated for HTML generated sites. Generate the JSON and then import to the website that accepts JSON for parsing into a table.
 
